@@ -1,5 +1,34 @@
+$primary: #1a3143;
+$primary-alt: #21436e;
+$secondary: #268fb4;
+$white: #fff;
+$black: #000;
+$spacing: 1.5rem;
+$transition: 0.4s;
+$gray: #757575;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.btn-custom {
+  color: $primary;
+  border: 1px solid $primary-alt;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.3px;
+  padding: 0.5rem 1.5rem;
+  background-color: $white;
+  border-radius: 0;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $white !important;
+    color: $primary !important;
+  }
+}
+body {
+  height: 10000px;
 }

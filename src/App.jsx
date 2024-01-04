@@ -1,10 +1,14 @@
 import Carousel from "./components/Carousel";
+import HeroSection from "./components/HeroSection";
 
 function App() {
   return (
     <>
       <header></header>
-      <main>{/* <Carousel/> */}</main>
+      <main>
+        <HeroSection />
+        {/* <Carousel/> */}
+      </main>
     </>
   );
 }
