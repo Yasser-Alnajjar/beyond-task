@@ -9,6 +9,13 @@
   top: 0;
   padding: 3rem;
   z-index: 10;
+  @media screen and (max-width: 768px) {
+    .logo {
+      img {
+        width: 100px;
+      }
+    }
+  }
   .container {
     display: flex;
     justify-content: space-between;

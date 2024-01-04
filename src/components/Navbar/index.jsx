@@ -5,25 +5,14 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { WiDegrees } from "react-icons/wi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useQuery } from "react-query";
-const fetchWeather = async () => {
-  const res = await fetch(
-    "https://api.openweathermap.org/data/2.5/weather?lat=26.96546281915211&lon=33.883077697384714&appid=f1130b3524feefd0549671bf69edc578"
-  );
-  const data = await res.json();
-  return data;
-};
-export default function Navbar() {
+
+export default function Navbar({ isShow, show, isSuccess, data }) {
   const { scrollYProgress } = useScroll();
   const backgroundColor = useTransform(
     scrollYProgress,
     [0, 20],
     ["transparent", "#1a3143"]
   );
-  const { data, isSuccess } = useQuery({
-    queryKey: "Weather",
-    queryFn: fetchWeather,
-  });
 
   return (
     <motion.nav
@@ -58,7 +47,12 @@ export default function Navbar() {
             <button className="btn btn-custom">Book Now</button>
           </li>
           <li className="d-none d-md-block nav-item">MENU</li>
-          <li className="nav-item">
+          <li
+            className="nav-item"
+            onClick={() => {
+              isShow(!show);
+            }}
+          >
             <div className="menu">
               <IoMdMenu size={30} />
             </div>
