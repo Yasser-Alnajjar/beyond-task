@@ -1,5 +1,5 @@
-import { Col, Row, Container, Button } from "react-bootstrap";
-import { motion, MotionConfig } from "framer-motion";
+import { Col, Row, Container } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 import "./HeroSection.scss";
 import heroSectionImage from "../../assets/DSC.png";
@@ -7,6 +7,8 @@ import heroSectionImage from "../../assets/DSC.png";
 export default function HeroSection() {
   return (
     <section className="hero_section">
+      <div style={{ height: 93 }} />
+
       <Container>
         <Row>
           <Col md={6}>
@@ -22,7 +24,15 @@ export default function HeroSection() {
               }}
               className="image"
             >
-              <img src={heroSectionImage} alt="DSC" />
+              <motion.img
+                whileHover={{
+                  scale: 0.98,
+                  rotate: "-5deg",
+                  borderRadius: 6,
+                }}
+                src={heroSectionImage}
+                alt="DSC"
+              />
             </motion.div>
           </Col>
           <Col md={6}>
@@ -47,7 +57,7 @@ export default function HeroSection() {
                 above sea level guaranteeing magnificent panoramic sea views
                 residential units. Envisioned as a comprehensive town.
               </p>
-              <div className="d-flex gap-4">
+              <div className="d-flex gap-4 flex-wrap">
                 <motion.button
                   whileHover={{
                     scale: 0.98,

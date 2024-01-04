@@ -1,11 +1,4 @@
-$primary: #1a3143;
-$primary-alt: #21436e;
-$secondary: #268fb4;
-$white: #fff;
-$black: #000;
-$spacing: 1.5rem;
-$transition: 0.4s;
-$gray: #757575;
+@import "sass/main";
 
 * {
   margin: 0;
@@ -27,6 +20,20 @@ $gray: #757575;
   &:focus {
     background-color: $white !important;
     color: $primary !important;
+  }
+}
+.btn-outlined {
+  background-color: transparent !important;
+  color: white;
+  border: 1px solid $white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  &:active,
+  &:focus {
+    background-color: transparent !important;
+    color: $white !important;
+    border-color: $white;
   }
 }
 body {
