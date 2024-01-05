@@ -8,11 +8,11 @@ export default function Sidebar({ isShow, show, isSuccess, data }) {
   const controls = useAnimationControls();
 
   const handleClick = () => {
-    isShow(!show);
     controls.start(show ? "show" : "hide");
+    isShow(!show);
   };
   useEffect(() => {
-    controls.start(show ? "show" : "hide");
+    controls.start(!show ? "show" : "hide");
   }, [show]);
   return (
     <motion.div

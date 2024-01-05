@@ -1,42 +1,33 @@
 import "swiper/css";
-import "swiper/css/effect-cube";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "./Carousel.scss";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, EffectCube, Navigation } from "swiper/modules";
+import { Swiper } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import { useRef } from "react";
 
-export default function Carousel() {
+export default function Carousel({ activeIndex, setActiveIndex, children }) {
+  const swiperRef = useRef(null);
+
+  if (swiperRef.current && swiperRef.current.swiper) {
+    const swiperInstance = swiperRef.current.swiper;
+    // Access pagination bullets
+    const bullets = swiperInstance.pagination.bullets;
+    bullets[activeIndex].click();
+  }
   return (
     <Swiper
       pagination={{
         clickable: true,
       }}
+      onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+      ref={swiperRef}
       spaceBetween={30}
-      effect={"cube"}
+      effect={"fade"}
       grabCursor={true}
-      cubeEffect={{
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94,
-      }}
-      modules={[EffectCube, Navigation, Pagination]}
+      modules={[Pagination]}
       className="swiper"
     >
-      <SwiperSlide>
-        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-      </SwiperSlide>
+      {children}
     </Swiper>
   );
 }

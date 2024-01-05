@@ -1,0 +1,76 @@
+.second_section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  .info_card {
+    &_title,
+    &_subtitle {
+      font-weight: 400;
+      color: #21436e;
+    }
+    &_title {
+      font-size: 2rem;
+    }
+    &_subtitle {
+      @media screen and (min-width: 1000px) {
+        font-size: 5rem;
+      }
+      font-size: 3.5rem;
+    }
+    &_text {
+      font-size: 18px;
+      color: #21436e;
+      line-height: 29px;
+    }
+  }
+  .service_card {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 2px dotted #c4c4c4;
+    padding-bottom: 1rem;
+    margin: 2rem 0;
+    &.active {
+      .service_card_title {
+        color: $primary;
+      }
+    }
+    svg {
+      margin-bottom: 1rem;
+    }
+    &_title {
+      color: $secondary;
+      font-weight: 400;
+      text-align: center;
+    }
+    &_text,
+    &_subtext {
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      margin: 0;
+      color: $gray;
+    }
+  }
+  .service_card_container {
+    position: relative;
+    &::before {
+      content: "";
+      height: 90%;
+      left: 50%;
+      top: 50%;
+      bottom: 0;
+      border: 1px dotted $gray;
+      position: absolute;
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+    @media screen and (max-width: 768px) {
+      &::before {
+        content: "";
+        height: 0;
+        border: none;
+      }
+    }
+  }
+}

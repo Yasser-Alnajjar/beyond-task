@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import { useQuery } from "react-query";
+import SecondSection from "./components/SecondSection";
 const fetchWeather = async () => {
   const res = await fetch(
     "https://api.openweathermap.org/data/2.5/weather?lat=26.96546281915211&lon=33.883077697384714&appid=f1130b3524feefd0549671bf69edc578"
@@ -14,12 +15,12 @@ const fetchWeather = async () => {
   return data;
 };
 function App() {
+  const [show, isShow] = useState(false);
   const { data, isSuccess } = useQuery({
     queryKey: "Weather",
     queryFn: fetchWeather,
   });
 
-  const [show, isShow] = useState(false);
   return (
     <>
       <motion.div
@@ -44,7 +45,7 @@ function App() {
       </header>
       <main>
         <HeroSection />
-        {/* <Carousel/> */}
+        <SecondSection />
       </main>
     </>
   );
