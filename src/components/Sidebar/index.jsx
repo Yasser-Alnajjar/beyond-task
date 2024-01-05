@@ -1,8 +1,7 @@
-import { useAnimationControls, AnimatePresence } from "framer-motion";
+import { useAnimationControls } from "framer-motion";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
-import { TiWeatherPartlySunny } from "react-icons/ti";
 import { WiDegrees } from "react-icons/wi";
 export default function Sidebar({ isShow, show, isSuccess, data }) {
   const controls = useAnimationControls();
@@ -47,13 +46,23 @@ export default function Sidebar({ isShow, show, isSuccess, data }) {
             }}
           />
         </li>
-        <li className="nav-item">HOME</li>
-        <li className="nav-item">ABOUT</li>
-        <li className="nav-item">CONTACT US</li>
+        <li className="nav-item">
+          <a href="#">HOME</a>
+        </li>
+        <li className="nav-item">
+          <a href="#about">ABOUT</a>
+        </li>
+        <li className="nav-item">
+          <a href="#contact">CONTACT US</a>
+        </li>
       </ul>
       {isSuccess && (
-        <div className="d-flex gap-2 weather-info">
-          <TiWeatherPartlySunny size={30} />
+        <div className="d-flex gap-2 weather-info align-items-center">
+          <img
+            src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+            alt=""
+          />
+          <div>{data.weather[0].main}</div>
           <div className="position-relative">
             <span style={{ position: "absolute", top: "-10px" }}>
               <WiDegrees size={50} />

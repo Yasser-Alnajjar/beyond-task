@@ -1,0 +1,84 @@
+.contact {
+  background-color: #ededed80;
+  .contact-form {
+    padding: 3rem;
+    @media screen and (max-width: 350px) {
+      padding: 0.5rem;
+    }
+
+    &-text {
+      color: $primary-alt;
+      width: 300px;
+      @media screen and (max-width: 350px) {
+        width: auto;
+      }
+    }
+    form {
+      overflow: hidden;
+      padding-bottom: 2rem;
+      .group {
+        margin-bottom: 1rem;
+        input,
+        select,
+        textarea {
+          width: 100%;
+          border: none;
+          background-color: transparent;
+          border-bottom: 1px solid #64646479;
+          color: $primary-alt;
+          padding: 0.375rem 0;
+          position: relative;
+          outline: none;
+        }
+        textarea {
+          resize: none;
+        }
+      }
+      #check {
+        accent-color: #646464;
+      }
+      ::placeholder {
+        color: $primary-alt;
+      }
+      .btn-custom {
+        transition: 0.3s ease-in-out;
+        background-color: $primary-alt;
+        color: $white;
+        text-transform: uppercase;
+      }
+    }
+  }
+  &_image {
+    img {
+      width: 100%;
+      min-height: 630px;
+      object-fit: cover;
+    }
+    position: relative;
+    display: flex;
+    &_text {
+      position: absolute;
+      right: -17%;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      &_title {
+        font-size: 1.5rem;
+        color: $primary-alt;
+        font-weight: 600;
+        font-style: italic;
+      }
+      &_subtitle {
+        font-size: 3.5rem;
+        color: $primary-alt;
+      }
+      @media screen and (max-width: 991px) {
+        &_subtitle {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}
+.error-message {
+  color: red;
+}

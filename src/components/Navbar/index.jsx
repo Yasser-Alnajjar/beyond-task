@@ -3,7 +3,6 @@ import Logo from "../../assets/logo.png";
 import { IoMdMenu } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
 import { WiDegrees } from "react-icons/wi";
-import { TiWeatherPartlySunny } from "react-icons/ti";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Navbar({ isShow, show, isSuccess, data }) {
@@ -28,15 +27,30 @@ export default function Navbar({ isShow, show, isSuccess, data }) {
         </div>
         <ul className="nav">
           {isSuccess && (
-            <li className="d-none d-md-flex nav-item d-flex gap-3">
-              <TiWeatherPartlySunny size={30} />
+            <motion.li
+              initial={{
+                opacity: 1,
+                scale: 1,
+              }}
+              animate={{
+                opacity: show ? 0 : 1,
+                scale: show ? 0 : 1,
+              }}
+              transition={{ duration: 1 }}
+              className="d-none d-md-flex nav-item align-items-center gap-3"
+            >
+              <img
+                src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+                alt=""
+              />
+              <div>{data.weather[0].main}</div>
               <div className="position-relative">
                 <span style={{ position: "absolute", top: "-10px" }}>
                   <WiDegrees size={50} />
                 </span>
                 {Math.floor(data.main.temp - 273.15)}
               </div>
-            </li>
+            </motion.li>
           )}
           <li className="d-none d-md-block nav-item">
             <button className="btn-outlined">
@@ -47,7 +61,13 @@ export default function Navbar({ isShow, show, isSuccess, data }) {
             <button className="btn btn-custom">Book Now</button>
           </li>
           <li className="d-none d-md-block nav-item">MENU</li>
-          <li
+          <motion.li
+            initial={{
+              scale: 1,
+            }}
+            whileTap={{
+              scale: 1.1,
+            }}
             className="nav-item"
             onClick={() => {
               isShow(!show);
@@ -56,7 +76,7 @@ export default function Navbar({ isShow, show, isSuccess, data }) {
             <div className="menu">
               <IoMdMenu size={30} />
             </div>
-          </li>
+          </motion.li>
         </ul>
       </Container>
     </motion.nav>

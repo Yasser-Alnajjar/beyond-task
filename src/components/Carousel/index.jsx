@@ -1,6 +1,6 @@
 import "swiper/css";
 import "swiper/css/pagination";
-
+import { motion } from "framer-motion";
 import { Swiper } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { useRef } from "react";
@@ -15,19 +15,30 @@ export default function Carousel({ activeIndex, setActiveIndex, children }) {
     bullets[activeIndex].click();
   }
   return (
-    <Swiper
-      pagination={{
-        clickable: true,
+    <motion.div
+      initial={{
+        opacity: 0,
+        translateX: "100%",
       }}
-      onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-      ref={swiperRef}
-      spaceBetween={30}
-      effect={"fade"}
-      grabCursor={true}
-      modules={[Pagination]}
-      className="swiper"
+      whileInView={{
+        opacity: 1,
+        translateX: "0%",
+      }}
     >
-      {children}
-    </Swiper>
+      <Swiper
+        pagination={{
+          clickable: true,
+        }}
+        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+        ref={swiperRef}
+        spaceBetween={30}
+        effect={"fade"}
+        grabCursor={true}
+        modules={[Pagination]}
+        className="swiper"
+      >
+        {children}
+      </Swiper>
+    </motion.div>
   );
 }

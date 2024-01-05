@@ -14,13 +14,16 @@ export default function HeroSection() {
           <Col md={6}>
             <motion.div
               initial={{
-                transform: "translateX(-150%)",
+                scale: 0,
+                rotate: "0deg",
               }}
-              animate={{
-                transform: "translateX(0)",
+              whileInView={{
+                scale: 1,
+                rotate: "360deg",
               }}
               transition={{
                 duration: 1,
+                ease: "backInOut",
               }}
               className="image"
             >
@@ -37,7 +40,6 @@ export default function HeroSection() {
           </Col>
           <Col md={6}>
             <motion.div
-              style={{}}
               initial={{
                 transform: "translateX(150%)",
               }}
@@ -49,14 +51,91 @@ export default function HeroSection() {
               }}
               className="info"
             >
-              <h5 className="main-title">The place</h5>
-              <h2 className="sub-title">we call home</h2>
-              <p className="text">
+              <motion.h5
+                initial={{
+                  x: 0,
+                }}
+                whileInView={{
+                  x: [30, 0, -30, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  staggerChildren: 0.1,
+                }}
+                className="main-title"
+              >
+                The place
+              </motion.h5>
+              <motion.h2
+                initial="hidden"
+                whileInView="show"
+                transition={{
+                  staggerChildren: 0.1,
+                }}
+                className="sub-title"
+              ></motion.h2>
+              <motion.h2
+                initial="hidden"
+                whileInView="show"
+                transition={{
+                  staggerChildren: 0.1,
+                }}
+                className="sub-title"
+              >
+                {"we call home".split(" ").map((word) => (
+                  <span
+                    key={word + "word"}
+                    style={{
+                      display: "inline-block",
+                    }}
+                  >
+                    {word.split("").map((char, index) => (
+                      <motion.span
+                        key={index}
+                        style={{
+                          display: "inline-block",
+                        }}
+                        variants={{
+                          hidden: {
+                            opacity: 0,
+                            y: 20,
+                          },
+                          show: {
+                            opacity: 1,
+                            y: 0,
+                          },
+                        }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                    <span
+                      style={{
+                        display: "inline-block",
+                      }}
+                    >
+                      &nbsp;
+                    </span>
+                  </span>
+                ))}
+              </motion.h2>
+              <motion.p
+                initial={{
+                  rotate: "0deg",
+                }}
+                whileHover={{
+                  rotate: "2deg",
+                }}
+                transition={{
+                  ease: "backInOut",
+                }}
+                className="text"
+              >
                 Makadi Heights is a town built over 3.4 million square meters
                 planned for development, with an elevation reaching 78 meters
                 above sea level guaranteeing magnificent panoramic sea views
                 residential units. Envisioned as a comprehensive town.
-              </p>
+              </motion.p>
               <div className="d-flex gap-4 flex-wrap">
                 <motion.button
                   whileHover={{

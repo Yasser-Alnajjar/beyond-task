@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Carousel from "../Carousel";
+import { motion, MotionConfig } from "framer-motion";
 import { SwiperSlide } from "swiper/react";
 import central from "../../assets/slider/central.jpg";
 import commercial from "../../assets/slider/commercial.jpg";
@@ -19,7 +20,7 @@ const items = [
   { id: 6, src: medical, alt: "medical" },
 ];
 
-export default function SecondSection() {
+export default function About() {
   const [activeIndex, setActiveIndex] = useState(0);
   const service_items = [
     {
@@ -53,8 +54,8 @@ export default function SecondSection() {
       subtext: "Far far away, behind",
       icon: (
         <svg
-          width="59"
-          height="31"
+          width="56"
+          height="38"
           viewBox="0 0 59 31"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -85,8 +86,8 @@ export default function SecondSection() {
       subtext: "Kids Areas",
       icon: (
         <svg
-          width="38"
-          height="42"
+          width="43"
+          height="38"
           viewBox="0 0 38 42"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -109,8 +110,8 @@ export default function SecondSection() {
       subtext: "the word mountains",
       icon: (
         <svg
-          width="49"
-          height="45"
+          width="43"
+          height="38"
           viewBox="0 0 49 45"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -129,8 +130,8 @@ export default function SecondSection() {
       subtext: "the word mountains",
       icon: (
         <svg
-          width="37"
-          height="34"
+          width="43"
+          height="38"
           viewBox="0 0 37 34"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -165,8 +166,8 @@ export default function SecondSection() {
       subtext: "the word mountains",
       icon: (
         <svg
-          width="32"
-          height="35"
+          width="43"
+          height="38"
           viewBox="0 0 32 35"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -185,46 +186,81 @@ export default function SecondSection() {
   ];
 
   return (
-    <div className="second_section">
-      <Container>
-        <Row>
-          <Col md={6}>
-            <div className="info_card">
-              <h5 className="info_card_title">Discover Lifestyle</h5>
-              <h2 className="info_card_subtitle">Amentities</h2>
-              <p className="info_card_text">
-                Occupying a land area of 33,000 square meters, Makadi Heights’
-                stunning clubhouse
-              </p>
-              <Row className="service_card_container">
-                {service_items.map((item, index) => (
-                  <Col md={6} key={item.id}>
-                    <ServiceCard
-                      onClick={() => {
-                        setActiveIndex(index);
-                      }}
-                      title={item.title}
-                      text={item.text}
-                      subtext={item.subtext}
-                      icon={item.icon}
-                      active={index === activeIndex}
-                    />
-                  </Col>
-                ))}
-              </Row>
-            </div>
-          </Col>
-          <Col md={6}>
-            <Carousel setActiveIndex={setActiveIndex} activeIndex={activeIndex}>
-              {items.map((item) => (
-                <SwiperSlide key={item.id}>
-                  <img className="slide-image" src={item.src} alt={item.alt} />
-                </SwiperSlide>
-              ))}
-            </Carousel>
-          </Col>
-        </Row>
-      </Container>
+    <div className="about" id="about">
+      <MotionConfig
+        transition={{
+          duration: 1,
+        }}
+      >
+        <Container>
+          <Row>
+            <Col md={6}>
+              <div className="info_card">
+                <motion.h5
+                  initial={{
+                    scale: 0,
+                  }}
+                  whileInView={{
+                    scale: 1,
+                  }}
+                  className="info_card_title"
+                >
+                  Discover Lifestyle
+                </motion.h5>
+                <motion.h2
+                  initial={{
+                    scale: 0,
+                  }}
+                  whileInView={{
+                    scale: 1,
+                  }}
+                  className="info_card_subtitle"
+                >
+                  Amentities
+                </motion.h2>
+                <p className="info_card_text">
+                  Occupying a land area of 33,000 square meters, Makadi Heights’
+                  stunning clubhouse
+                </p>
+                <Row className="service_card_container">
+                  {service_items.map((item, index) => (
+                    <Col md={6} key={item.id}>
+                      <ServiceCard
+                        onClick={() => {
+                          setActiveIndex(index);
+                        }}
+                        title={item.title}
+                        text={item.text}
+                        subtext={item.subtext}
+                        icon={item.icon}
+                        active={index === activeIndex}
+                      />
+                    </Col>
+                  ))}
+                </Row>
+              </div>
+            </Col>
+            <Col md={6}>
+              <div style={{ overflow: "hidden" }}>
+                <Carousel
+                  setActiveIndex={setActiveIndex}
+                  activeIndex={activeIndex}
+                >
+                  {items.map((item) => (
+                    <SwiperSlide key={item.id}>
+                      <img
+                        className="slide-image"
+                        src={item.src}
+                        alt={item.alt}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Carousel>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </MotionConfig>
     </div>
   );
 }
