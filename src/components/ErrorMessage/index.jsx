@@ -1,3 +1,5 @@
-export default function ErrorMessage({ name }) {
-  return name !== "" && <p className="error-message">{name}</p>;
+export default function ErrorMessage({ touched, error }) {
+  if (error !== "" && touched) {
+    return <p className="error-message">{error}</p>;
+  }
 }

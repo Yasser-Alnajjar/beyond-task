@@ -39,7 +39,6 @@ export default function Contact() {
       toast.success(`Thanks we catch your message 😊`);
     },
   });
-  console.log(formik.errors);
   return (
     <div className="contact" id="contact">
       <Container fluid>
@@ -87,9 +86,13 @@ export default function Contact() {
                         type="text"
                         name="name"
                         onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         placeholder="Your name"
                       />
-                      <ErrorMessage name={formik.errors.name} />
+                      <ErrorMessage
+                        error={formik.errors.name}
+                        touched={formik.touched.name}
+                      />
                     </motion.div>
                   </Col>
                   <Col sm={12}>
@@ -104,12 +107,16 @@ export default function Contact() {
                       className="group"
                     >
                       <input
-                        type="email"
+                        type="text"
                         name="email"
                         onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         placeholder="Email ID"
                       />
-                      <ErrorMessage name={formik.errors.email} />
+                      <ErrorMessage
+                        error={formik.errors.email}
+                        touched={formik.touched.email}
+                      />
                     </motion.div>
                   </Col>
                   <Col sm={12}>
@@ -127,9 +134,13 @@ export default function Contact() {
                         type="text"
                         name="phone"
                         onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         placeholder="Phone number"
                       />
-                      <ErrorMessage name={formik.errors.phone} />
+                      <ErrorMessage
+                        error={formik.errors.phone}
+                        touched={formik.touched.phone}
+                      />
                     </motion.div>
                   </Col>
                   <Col sm={12}>
@@ -143,14 +154,21 @@ export default function Contact() {
                       transition={{ duration: 1 }}
                       className="group"
                     >
-                      <select name="budget" onChange={formik.handleChange}>
+                      <select
+                        name="budget"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                      >
                         <option value="">Choose your budget</option>
                         <option value="2000">$2000</option>
                         <option value="3000">$3000</option>
                         <option value="4000">$4000</option>
                         <option value="5000">$5000</option>
                       </select>
-                      <ErrorMessage name={formik.errors.budget} />
+                      <ErrorMessage
+                        error={formik.errors.budget}
+                        touched={formik.touched.budget}
+                      />
                     </motion.div>
                   </Col>
                   <Col sm={12}>
@@ -168,9 +186,13 @@ export default function Contact() {
                         name="message"
                         rows={1}
                         onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         placeholder="Enter you message"
                       />
-                      <ErrorMessage name={formik.errors.message} />
+                      <ErrorMessage
+                        error={formik.errors.message}
+                        touched={formik.touched.message}
+                      />
                     </motion.div>
                   </Col>
                   <Col sm={12}>
@@ -181,6 +203,7 @@ export default function Contact() {
                         id="check"
                         value={formik.values.check[0]}
                         onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                       />
                       <label htmlFor="check" className="text-muted">
                         I agree to the processing of personal data
