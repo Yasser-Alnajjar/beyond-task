@@ -8,7 +8,6 @@ import Sidebar from "./components/Sidebar";
 import { useQuery } from "react-query";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import { Toaster } from "react-hot-toast";
 const fetchWeather = async () => {
   const res = await fetch(
     "https://api.openweathermap.org/data/2.5/weather?lat=26.96546281915211&lon=33.883077697384714&appid=f1130b3524feefd0549671bf69edc578"
@@ -25,7 +24,6 @@ function App() {
 
   return (
     <>
-      <Toaster position="top right" reverseOrder={false} />
       <motion.div
         initial={{ display: "block" }}
         animate={{ display: "none" }}

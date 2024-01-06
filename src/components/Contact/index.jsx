@@ -3,7 +3,8 @@ import contact from "../../assets/menu.png";
 import { motion } from "framer-motion";
 import { useFormik } from "formik";
 import ErrorMessage from "../ErrorMessage";
-import { toast } from "react-hot-toast";
+import Swal from "sweetalert2";
+
 import { object, string } from "yup";
 export default function Contact() {
   const schema = object().shape({
@@ -41,8 +42,12 @@ export default function Contact() {
     },
     validationSchema: schema,
     onSubmit: (values) => {
-      console.log(values);
-      toast.success(`Thanks we catch your message 😊`);
+      Swal.fire({
+        title: `${values.name}`,
+        text: `Thanks we catch your message 😊`,
+        icon: "success",
+        confirmButtonColor: "#21436E",
+      });
     },
   });
   return (
