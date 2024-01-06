@@ -43,7 +43,7 @@ export default function Navbar({ isShow, show, isSuccess, data }) {
                 src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
                 alt=""
               />
-              <div>{data.weather[0].main}</div>
+              <div className="d-none d-lg-block">{data.weather[0].main}</div>
               <div className="position-relative">
                 <span style={{ position: "absolute", top: "-10px" }}>
                   <WiDegrees size={50} />

@@ -9,14 +9,20 @@ export default function Contact() {
   const schema = object().shape({
     name: string()
       .min(3, "Too Short!")
-      .max(50, "Too Long!")
+      .max(20, "Too Long!")
       .required("Name is Required"),
     email: string()
       .required("Email address is Required")
       .email("invalid email address"),
     phone: string()
+      .test("not-string", "phone must be a number", (value) => {
+        if (isNaN(value)) {
+          return false;
+        }
+        return true;
+      })
       .min(11, "Too Short!")
-      .max(11, "Invalid phone number")
+      .max(11, "Phone number must be smaller than 11 numbers")
       .required("Phone is Required"),
     budget: string().required("Budget is Required"),
     message: string()

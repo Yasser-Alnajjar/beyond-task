@@ -31,7 +31,6 @@ export default function HeroSection() {
                 whileHover={{
                   scale: 0.98,
                   rotate: "-5deg",
-                  borderRadius: 6,
                 }}
                 src={heroSectionImage}
                 alt="DSC"
