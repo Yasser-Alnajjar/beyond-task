@@ -41,7 +41,7 @@ export default function Navbar({ isShow, show, isSuccess, data }) {
             >
               <img
                 src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
-                alt=""
+                alt={data.weather[0].main}
               />
               <div className="d-none d-lg-block">{data.weather[0].main}</div>
               <div className="position-relative">
